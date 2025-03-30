@@ -1,9 +1,3 @@
-/*
- Name    : Just Another Parallax [Jarallax]
- Version : 1.12.7
- Author  : nK <https://nkdev.info>
- GitHub  : https://github.com/nk-o/jarallax
-*/
 var $jscomp = $jscomp || {}; $jscomp.scope = {}; $jscomp.ASSUME_ES5 = !1; $jscomp.ASSUME_NO_NATIVE_MAP = !1; $jscomp.ASSUME_NO_NATIVE_SET = !1; $jscomp.SIMPLE_FROUND_POLYFILL = !1; $jscomp.defineProperty = $jscomp.ASSUME_ES5 || "function" == typeof Object.defineProperties ? Object.defineProperty : function (a, d, b) { a != Array.prototype && a != Object.prototype && (a[d] = b.value) }; $jscomp.getGlobal = function (a) { return "undefined" != typeof window && window === a ? a : "undefined" != typeof global && null != global ? global : a }; $jscomp.global = $jscomp.getGlobal(this);
 $jscomp.polyfill = function (a, d, b, e) { if (d) { b = $jscomp.global; a = a.split("."); for (e = 0; e < a.length - 1; e++) { var g = a[e]; g in b || (b[g] = {}); b = b[g] } a = a[a.length - 1]; e = b[a]; d = d(e); d != e && null != d && $jscomp.defineProperty(b, a, { configurable: !0, writable: !0, value: d }) } };
 $jscomp.polyfill("Array.from", function (a) { return a ? a : function (a, b, e) { b = null != b ? b : function (a) { return a }; var d = [], l = "undefined" != typeof Symbol && Symbol.iterator && a[Symbol.iterator]; if ("function" == typeof l) { a = l.call(a); for (var q = 0; !(l = a.next()).done;)d.push(b.call(e, l.value, q++)) } else for (l = a.length, q = 0; q < l; q++)d.push(b.call(e, a[q], q)); return d } }, "es6", "es3"); $jscomp.arrayIteratorImpl = function (a) { var d = 0; return function () { return d < a.length ? { done: !1, value: a[d++] } : { done: !0 } } }; $jscomp.arrayIterator = function (a) { return { next: $jscomp.arrayIteratorImpl(a) } };
